@@ -1,6 +1,8 @@
 import Express from "express";
 import cors from "cors";
 
+import routes from "./routes";
+
 // Instancia o express.
 const app = Express();
 
@@ -19,12 +21,7 @@ app.use(cors(corsOptions));
 app.use(Express.json());
 
 // Serviço oferecido no endereço raiz.
-app.get("/", ( _ , response) => {
-  return response
-        .status(200)
-        .json("Hello World!");
-  // return response.send("Hello World!");
-});
+app.use(routes);
 
 // Escuta solicitações e serve a aplicação Node.
 app.listen(port, () => {
